@@ -83,6 +83,8 @@ set(BIN_SRC src/app/CmdOptions.cpp
 # primesieve library source files ####################################
 
 set(LIB_SRC src/api-c.cpp
+            src/primegaps-c.cpp
+            src/PrimeGapsGenerator.cpp
             src/api.cpp
             src/CountPrintPrimes.cpp
             src/CpuInfo.cpp
