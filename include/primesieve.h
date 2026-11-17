@@ -34,6 +34,20 @@
 extern "C" {
 #endif
 
+/**
+ * Results returned by primesieve_primegaps().
+ * first_gap and last_gap are distances from the sieve interval boundaries
+ * to the first and last prime, respectively.
+ */
+typedef struct
+{
+  uint64_t max_gap;
+  uint64_t max_gap_start;
+  uint64_t prime_count;
+  uint64_t first_gap;
+  uint64_t last_gap;
+} primesieve_primegaps_result;
+
 enum {
   /** Generate primes of short type */
   SHORT_PRIMES,
@@ -64,6 +78,15 @@ enum {
   /** Generate primes of uint64_t type */
   UINT64_PRIMES
 };
+
+/**
+ * Compute PrimeGaps statistics for one complete run.
+ *
+ * runid must be >= 1. Each run covers the inclusive interval
+ * [runid * 100000000000 + 1, (runid + 1) * 100000000000].
+ * Returns 0 on success and -1 on error (errno is set).
+ */
+int primesieve_primegaps(uint64_t runid, primesieve_primegaps_result* result);
 
 /**
  * Get an array with the primes inside the interval [start, stop].
