@@ -15,7 +15,7 @@ extern "C" int primesieve_primegaps(
 {
   constexpr uint64_t RUN_SIZE = UINT64_C(100000000000);
 
-  if (result == nullptr || runid == 0 ||
+  if (result == nullptr ||
       runid >= std::numeric_limits<uint64_t>::max() / RUN_SIZE)
   {
     errno = EINVAL;
